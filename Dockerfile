@@ -10,4 +10,6 @@ COPY --from=compiler /nacos/distribution/target/nacos-server-2.2.1/nacos /opt/na
 
 ENV NACOS_HOME /opt/nacos
 
+sed -i "s/nacos.core.auth.plugin.nacos.token.secret.key=/nacos.core.auth.plugin.nacos.token.secret.key=${NACOS_TOKEN_SECRET_KEY}" ${NACOS_HOME}/conf/application.properties
+
 WORKDIR /opt/nacos
